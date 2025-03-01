@@ -53,6 +53,13 @@ cargo run --release
 - Rust 1.70.0 或更高版本
 - 系统要求：Windows 10+/macOS 10.15+/Linux (内核 4.19+)
 
+### 参考
+
+- [cursor-auto-free](https://github.com/chengazhen/cursor-auto-free) - 一个完善的自动化破解工具
+- [go-cursor-help](https://github.com/yuaotian/go-cursor-help) - 相同功能的 Go 语言版本
+
+
+
 ## 安全提示
 
 - 本工具会修改系统文件，请在使用前备份重要数据
@@ -62,6 +69,8 @@ cargo run --release
 ## 许可证
 
 MIT License
+
+详见 [LICENSE](LICCENSE)
 
 ## 贡献指南
 
