@@ -1,0 +1,11 @@
+[windows]
+storage_path = "%APPDATA%/Cursor/Local Storage/leveldb/storage.json"
+state_path = "%APPDATA%/Cursor/Local Storage/leveldb/state.json"
+
+[macos]
+storage_path = "Library/Application Support/Cursor/Local Storage/leveldb/storage.json"
+state_path = "Library/Application Support/Cursor/Local Storage/leveldb/state.json"
+
+[linux]
+storage_path = ".config/Cursor/Local Storage/leveldb/storage.json"
+state_path = ".config/Cursor/Local Storage/leveldb/state.json" 
