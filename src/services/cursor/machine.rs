@@ -1,4 +1,5 @@
 use crate::models::CursorAccount;
+use crate::utils::color::{green, red, yellow};
 use crate::utils::{
     check_admin_privileges, get_current_user, get_cursor_paths, kill_cursor_processes,
 };
@@ -22,12 +23,12 @@ impl CursorMachine {
         }
 
         let username = get_current_user()?;
-        println!("当前用户: {}", username);
+        println!("{} {}", yellow("当前用户: "), green(username.as_str()));
 
         println!("正在关闭 Cursor...");
         if let Err(e) = kill_cursor_processes() {
-            println!("警告: 关闭 Cursor 进程失败: {}", e);
-            println!("请确保手动关闭 Cursor 后继续");
+            println!("{} {}", red("警告: "), red(e.to_string().as_str()));
+            println!("{}", yellow("请确保手动关闭 Cursor 后继续"));
         }
 
         // 备份原始配置
@@ -84,7 +85,7 @@ impl CursorMachine {
             fs::copy(&user_data_path, &backup_path)?;
         }
 
-        println!("配置备份完成");
+        println!("{}", green("配置备份完成"));
         Ok(())
     }
 
@@ -116,7 +117,7 @@ impl CursorMachine {
             fs::copy(latest_state.path(), &user_data_path)?;
         }
 
-        println!("配置已恢复到最近的备份");
+        println!("{}", green("配置已恢复到最近的备份"));
         Ok(())
     }
 

@@ -1,10 +1,10 @@
+use crate::utils::color::{blue, yellow};
 use anyhow::{anyhow, Result};
 use std::env;
 use std::fs;
 use std::path::PathBuf;
 use std::process::Command;
 use toml::Value;
-
 pub fn get_config_path() -> Result<PathBuf> {
     let config_path = dirs::config_dir()
         .ok_or_else(|| anyhow!("无法获取配置目录"))?
@@ -111,8 +111,10 @@ fn get_home_dir() -> Result<PathBuf> {
 
 // 检查是否以管理员/root权限运行
 pub fn check_admin_privileges() -> Result<bool> {
+    println!("{}", blue("系统检测"));
     #[cfg(target_os = "windows")]
     {
+        println!("{}", yellow("Windows 系统"));
         use std::process::Command;
 
         // 使用PowerShell检查当前进程是否以管理员身份运行
@@ -130,6 +132,7 @@ pub fn check_admin_privileges() -> Result<bool> {
 
     #[cfg(target_os = "macos")]
     {
+        println!("{}", yellow("macOS 系统"));
         use std::process::Command;
 
         // 检查是否为root用户
@@ -144,6 +147,7 @@ pub fn check_admin_privileges() -> Result<bool> {
 
     #[cfg(target_os = "linux")]
     {
+        println!("{}", yellow("Linux 系统"));
         use std::process::Command;
 
         // 检查是否为root用户
