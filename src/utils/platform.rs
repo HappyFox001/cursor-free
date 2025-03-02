@@ -16,7 +16,6 @@ pub fn get_config_path() -> Result<PathBuf> {
 pub fn load_path_config() -> Result<Value> {
     let config_path = get_config_path()?;
 
-    // 如果配置文件不存在，复制默认配置
     if !config_path.exists() {
         if let Some(parent) = config_path.parent() {
             fs::create_dir_all(parent)?;
